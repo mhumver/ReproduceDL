@@ -7,6 +7,7 @@ from torch.utils import data
 from torch.utils.tensorboard import SummaryWriter
 import os
 import torch
+print('in if')
 if __name__ == "__main__":
     print('read args')
     opt = TrainOptions().parse()
