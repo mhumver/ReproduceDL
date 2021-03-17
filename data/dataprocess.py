@@ -10,24 +10,26 @@ class DataProcess(torch.utils.data.Dataset):
     def __init__(self, de_root, st_root, mask_root, opt, train=True):
         super(DataProcess, self).__init__()
         self.img_transform = transforms.Compose([
-            transforms.Resize(opt.fineSize),
+            transforms.Resize([opt.fineSize,opt.fineSize]),
             transforms.ToTensor(),
             transforms.Normalize((0.5, 0.5, 0.5),(0.5, 0.5, 0.5))
         ])
         # mask should not normalize, is just have 0 or 1
         self.mask_transform = transforms.Compose([
-            transforms.Resize(opt.fineSize),
+            transforms.Resize([opt.fineSize, opt.fineSize]),
             transforms.ToTensor()
         ])
         self.Train = False
         self.opt = opt
-
+        
         if train:
             self.de_paths = sorted(glob('{:s}/*'.format(de_root), recursive=True))
             self.st_paths = sorted(glob('{:s}/*'.format(st_root), recursive=True))
             self.mask_paths = sorted(glob('{:s}/*'.format(mask_root), recursive=True))
             self.Train=True
         self.N_mask = len(self.mask_paths)
+        print(len(self.de_paths))
+        print(len(self.st_paths))
         print(self.N_mask)
     def __getitem__(self, index):
 
