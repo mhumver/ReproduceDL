@@ -11,10 +11,11 @@ if __name__ == "__main__":
 
     opt = TrainOptions().parse()
     # define the dataset
-    
+    print('define dataset')
     dataset = DataProcess(opt.de_root,opt.st_root,opt.mask_root,opt,opt.isTrain)
     iterator_train = (data.DataLoader(dataset, batch_size=opt.batchSize, shuffle=True, num_workers=opt.num_workers))
     # Create model
+    print('create model')
     model = create_model(opt)
     total_steps=0
     # Create the logs
