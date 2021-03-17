@@ -8,7 +8,7 @@ from torch.utils.tensorboard import SummaryWriter
 import os
 import torch
 if __name__ == "__main__":
-
+    print('read args')
     opt = TrainOptions().parse()
     # define the dataset
     print('define dataset')
