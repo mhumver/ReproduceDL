@@ -53,6 +53,8 @@ if __name__ == "__main__":
 
                 #image = image.reshape(80,80)
                 for i in range(3):
+                    plt.imshow(grid[i])
+
                     for j in range(3):
                         plt.matshow(image_out[i][j])
                         plt.show() 
