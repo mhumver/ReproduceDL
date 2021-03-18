@@ -24,9 +24,9 @@ if __name__ == "__main__":
     total_steps=0
     # Create the logs
     dir = os.path.join(opt.log_dir, opt.name).replace('\\', '/')
-   # if not os.path.exists(dir):
+    if not os.path.exists(dir):
        # os.mkdir('/checkpoints/Mutual Encoder-Decoder.test11.txt')
-        ###"os.mkdir(dir)
+       os.mkdir(dir)
     writer = SummaryWriter(log_dir=dir, comment=opt.name)
     # Start Training
     for epoch in range (opt.epoch_count, opt.niter + opt.niter_decay + 1):
@@ -39,13 +39,15 @@ if __name__ == "__main__":
             model.set_input(detail, structure, mask)
             model.optimize_parameters()
             # display the training processing
-            if total_steps % opt.display_freq == 0:
+            if total_steps % opt.display_freq == 0: #dispfreq 10
+                print('display')
                 input, output, GT = model.get_current_visuals()
                 image_out = torch.cat([input, output, GT], 0)
                 grid = torchvision.utils.make_grid(image_out)
                 writer.add_image('Epoch_(%d)_(%d)' % (epoch, total_steps + 1), grid, total_steps + 1)
             # display the training loss
-            if total_steps % opt.print_freq == 0:
+            if total_steps % opt.print_freq == 0:  #printfreq 50
+                
                 errors = model.get_current_errors()
                 t = (time.time() - iter_start_time) / opt.batchSize
                 writer.add_scalar('G_GAN', errors['G_GAN'], total_steps + 1)
