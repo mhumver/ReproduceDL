@@ -25,7 +25,7 @@ if __name__ == "__main__":
     # Create the logs
     dir = os.path.join(opt.log_dir, opt.name).replace('\\', '/')
     if not os.path.exists(dir):
-        os.mkdir('/checkpoints/Mutual Encoder-Decoder')
+        os.mkdir('/checkpoints/Mutual Encoder-Decoder.test11.txt')
         ###"os.mkdir(dir)
     writer = SummaryWriter(log_dir=dir, comment=opt.name)
     # Start Training
