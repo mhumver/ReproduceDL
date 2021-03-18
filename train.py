@@ -51,8 +51,10 @@ if __name__ == "__main__":
                 grid = torchvision.utils.make_grid(image_out)
                 
                 #image = image.reshape(80,80)
-                plt.matshow(image_out)
-                plt.show() 
+                for i in range(3):
+                    for j in range(3):
+                        plt.matshow(image_out[i][j])
+                        plt.show() 
                 
                 
                 writer.add_image('Epoch_(%d)_(%d)' % (epoch, total_steps + 1), grid, total_steps + 1)
