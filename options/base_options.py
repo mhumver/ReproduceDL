@@ -25,7 +25,7 @@ class BaseOptions():
         parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. 0  0,1,2, 0,2')
         parser.add_argument('--model', type=str, default='training1', help='set the names of current training process')
         parser.add_argument('--nThreads', default=2, type=int, help='# threads for loading data')
-        parser.add_argument('--checkpoints_dir', type=str, default='./checkpoints', help='models are saved here')
+        parser.add_argument('--checkpoints_dir', type=str, default='/content/drive/My Drive/ReproductionDL/checkpoints', help='models are saved here')
         parser.add_argument('--norm', type=str, default='instance', help='instance normalization or batch normalization')
         parser.add_argument('--use_dropout', action='store_true', help='use dropout for the generator')
         parser.add_argument('--init_type', type=str, default='normal', help='network initialization [normal|xavier|kaiming|orthogonal]')
