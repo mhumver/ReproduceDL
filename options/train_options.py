@@ -5,7 +5,7 @@ from .base_options import BaseOptions
 class TrainOptions(BaseOptions):
     def initialize(self, parser):
         parser = BaseOptions.initialize(self, parser)
-        parser.add_argument('--log_dir', type=str, default='./content/drive/My Drive/ReproductionDL/', help='the path to record log')
+        parser.add_argument('--log_dir', type=str, default='/content/drive/My Drive/ReproductionDL/', help='the path to record log')
         parser.add_argument('--display_freq', type=int, default=10, help='frequency of showing training results on screen')
         parser.add_argument('--print_freq', type=int, default=50, help='frequency of showing training results on console')
         parser.add_argument('--display_single_pane_ncols', type=int, default=0, help='if positive, display all images in a single visdom web panel with certain number of images per row.')
