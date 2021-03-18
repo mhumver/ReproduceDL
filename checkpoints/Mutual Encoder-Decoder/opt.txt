@@ -17,7 +17,7 @@ display_single_pane_ncols: 0
                 lambda_L1: 1                             
                  lambda_P: 0.2                           
                  lambda_S: 250                           
-                  log_dir: ./logs                        
+                  log_dir: ./content/drive/My Drive/ReproductionDL/
                        lr: 0.0002                        
            lr_decay_iters: 50                            
                 lr_policy: lambda                        
@@ -25,7 +25,7 @@ display_single_pane_ncols: 0
                     model: training1                     
                  nThreads: 2                             
                n_layers_D: 3                             
-                     name: Mutual Encoder-Decoder       
+                     name: Mutual Encoder-Decoder        
                       ndf: 64                            
                       ngf: 64                            
                     niter: 20                            
