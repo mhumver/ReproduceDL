@@ -10,13 +10,13 @@ class DataProcess(torch.utils.data.Dataset):
     def __init__(self, de_root, st_root, mask_root, opt, train=True):
         super(DataProcess, self).__init__()
         self.img_transform = transforms.Compose([
-            transforms.Resize([opt.fineSize,opt.fineSize]),
+            transforms.Resize(opt.fineSize),
             transforms.ToTensor(),
             transforms.Normalize((0.5, 0.5, 0.5),(0.5, 0.5, 0.5))
         ])
         # mask should not normalize, is just have 0 or 1
         self.mask_transform = transforms.Compose([
-            transforms.Resize([opt.fineSize, opt.fineSize]),
+            transforms.Resize(opt.fineSize),
             transforms.ToTensor()
         ])
         self.Train = False
