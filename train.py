@@ -49,7 +49,7 @@ if __name__ == "__main__":
                 input, output, GT = model.get_current_visuals()
                 image_out = torch.cat([input, output, GT], 0)
                 grid = torchvision.utils.make_grid(image_out)
-                plt.imshow(grid)
+#                plt.imshow(grid)
 
                 #image = image.reshape(80,80)
                 for i in range(3):
