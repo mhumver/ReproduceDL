@@ -23,10 +23,11 @@ if __name__ == "__main__":
     model = create_model(opt)
     total_steps=0
     # Create the logs
-    dir = os.path.join(opt.log_dir, opt.name).replace('\\', '/')
-    if not os.path.exists(dir):
+    dir = opt.log_dir
+   # dir = os.path.join(opt.log_dir, opt.name).replace('\\', '/')
+    #if not os.path.exists(dir):
        # os.mkdir('/checkpoints/Mutual Encoder-Decoder.test11.txt')
-       os.mkdir(dir)
+     #  os.mkdir(dir)
     writer = SummaryWriter(log_dir=dir, comment=opt.name)
     # Start Training
     for epoch in range (opt.epoch_count, opt.niter + opt.niter_decay + 1):
