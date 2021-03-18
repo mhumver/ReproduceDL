@@ -27,8 +27,8 @@ class DataProcess(torch.utils.data.Dataset):
             
             
             self.de_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/celeba_256_1000/*.jpg'))
-            self.st_paths = sorted(glob(st_root+'/*', recursive=False))
-            self.mask_paths = sorted(glob(mask_root+'*', recursive=True))
+            self.st_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/celebastruct_256_1000/.*.jpg'))
+            self.mask_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/mask_dataset28/*.png'))
             
            # self.de_paths = sorted(glob('{:s}/*'.format(de_root), recursive=True))
           #  self.st_paths = sorted(glob('{:s}/*'.format(st_root), recursive=True))
