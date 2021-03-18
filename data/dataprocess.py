@@ -21,12 +21,17 @@ class DataProcess(torch.utils.data.Dataset):
         ])
         self.Train = False
         self.opt = opt
-        
+        print(train)
+        trian=True
         if train:
             self.de_paths = sorted(glob('{:s}/*'.format(de_root), recursive=True))
             self.st_paths = sorted(glob('{:s}/*'.format(st_root), recursive=True))
             self.mask_paths = sorted(glob('{:s}/*'.format(mask_root), recursive=True))
+            print(self.de_paths)
+            print(self.st_paths)
+            print(self.mask_paths)
             self.Train=True
+        print('length paths')
         self.N_mask = len(self.mask_paths)
         print(len(self.de_paths))
         print(len(self.st_paths))
