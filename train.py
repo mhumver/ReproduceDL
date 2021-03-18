@@ -49,14 +49,15 @@ if __name__ == "__main__":
             if total_steps % opt.print_freq == 0:  #printfreq 50
                 
                 errors = model.get_current_errors()
-                t = (time.time() - iter_start_time) / opt.batchSize
+                t = (time.time() - iter_start_time)
+                #t = (time.time() - iter_start_time) / opt.batchSize
                 writer.add_scalar('G_GAN', errors['G_GAN'], total_steps + 1)
                 writer.add_scalar('G_L1', errors['G_L1'], total_steps + 1)
                 writer.add_scalar('G_stde', errors['G_stde'], total_steps + 1)
                 writer.add_scalar('D_loss', errors['D'], total_steps + 1)
                 writer.add_scalar('F_loss', errors['F'], total_steps + 1)
-                print('iteration time: %d' % t)
-        if epoch % opt.save_epoch_freq == 0:
+                print('iteration time: %g' % t)
+        if (epoch % opt.save_epoch_freq) == 0: #epsavefreq 2
             print('saving the model at the end of epoch %d, iters %d' %
                   (epoch, total_steps))
             model.save_networks(epoch)
