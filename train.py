@@ -7,6 +7,9 @@ from torch.utils import data
 from torch.utils.tensorboard import SummaryWriter
 import os
 import torch
+
+import matplotlib as plt
+
 print('in if')
 if __name__ == "__main__":
     print('read args')
@@ -46,6 +49,12 @@ if __name__ == "__main__":
                 input, output, GT = model.get_current_visuals()
                 image_out = torch.cat([input, output, GT], 0)
                 grid = torchvision.utils.make_grid(image_out)
+                
+                #image = image.reshape(80,80)
+                plt.matshow(image_out)
+                plt.show() 
+                
+                
                 writer.add_image('Epoch_(%d)_(%d)' % (epoch, total_steps + 1), grid, total_steps + 1)
             # display the training loss
             if total_steps % opt.print_freq == 0:  #printfreq 50
