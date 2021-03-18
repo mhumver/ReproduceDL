@@ -25,7 +25,7 @@ display_single_pane_ncols: 0
                     model: training1                     
                  nThreads: 2                             
                n_layers_D: 3                             
-                     name:  Mutual Encoder-Decoder       
+                     name: Mutual Encoder-Decoder       
                       ndf: 64                            
                       ngf: 64                            
                     niter: 20                            
