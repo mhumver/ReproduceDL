@@ -34,7 +34,7 @@ if __name__ == "__main__":
     writer = SummaryWriter(log_dir=dir, comment=opt.name)
     # Start Training
     # for epoch in range (opt.epoch_count, opt.niter + opt.niter_decay + 1):
-    for epoch in range(2):
+    for epoch in range(1):
         epoch_start_time = time.time()
         epoch_iter = 0
         for detail, structure, mask in iterator_train:
@@ -52,13 +52,14 @@ if __name__ == "__main__":
 #                plt.imshow(grid)
 
                 #image = image.reshape(80,80)
+                """
                 for i in range(3):
                     plt.imshow(grid[i])
 
                     for j in range(3):
                         plt.matshow(image_out[i][j])
                         plt.show() 
-                
+                """
                 
                 writer.add_image('Epoch_(%d)_(%d)' % (epoch, total_steps + 1), grid, total_steps + 1)
             # display the training loss
