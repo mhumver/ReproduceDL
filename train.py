@@ -27,7 +27,7 @@ if __name__ == "__main__":
     total_steps=0
     # Create the logs
     dir = opt.log_dir
-   # dir = os.path.join(opt.log_dir, opt.name).replace('\\', '/')
+    dir = os.path.join(opt.log_dir, opt.name).replace('\\', '/')
     #if not os.path.exists(dir):
        # os.mkdir('/checkpoints/Mutual Encoder-Decoder.test11.txt')
      #  os.mkdir(dir)
@@ -82,3 +82,5 @@ if __name__ == "__main__":
               (epoch, opt.niter + opt.niter_decay, time.time() - epoch_start_time))
         model.update_learning_rate()
     writer.close()
+    os.system('python -m tensorflow.tensorboard --logdir=' + dir)
+
