@@ -26,9 +26,9 @@ class DataProcess(torch.utils.data.Dataset):
         if train:
             
             
-            self.de_paths = sorted(glob(de_root+'/*.jpg', recursive=True))
-            self.st_paths = sorted(glob(st_root+'/*.jpg', recursive=True))
-            self.mask_paths = sorted(glob(mask_root+'/*.png', recursive=True))
+            self.de_paths = sorted(glob(de_root+'/*', recursive=True))
+            self.st_paths = sorted(glob(st_root+'/*', recursive=True))
+            self.mask_paths = sorted(glob(mask_root+'/*', recursive=True))
             
            # self.de_paths = sorted(glob('{:s}/*'.format(de_root), recursive=True))
           #  self.st_paths = sorted(glob('{:s}/*'.format(st_root), recursive=True))
