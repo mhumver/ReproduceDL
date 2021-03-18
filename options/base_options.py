@@ -1,6 +1,6 @@
 import argparse
 import os
-from util import util
+#from util import util
 import torch
 
 class BaseOptions():
@@ -63,7 +63,8 @@ class BaseOptions():
 
         # save to the disk
         expr_dir = os.path.join(opt.checkpoints_dir, opt.name)
-        util.mkdirs(expr_dir)
+        ##############util.mkdirs(expr_dir)
+        os.mkdir(expr_dir)
         file_name = os.path.join(expr_dir, 'opt.txt')
         with open(file_name, 'wt') as opt_file:
             opt_file.write(message)
@@ -86,8 +87,9 @@ class BaseOptions():
             if id >= 0:
                 opt.gpu_ids.append(id)
         if len(opt.gpu_ids) > 0:
-            torch.cuda.set_device(opt.gpu_ids[0])
-
+#            device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+#first option           torch.cuda.set_device(opt.gpu_ids[0])
+            torch.cuda.set_device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.opt = opt
         return self.opt
 
