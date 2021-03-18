@@ -8,7 +8,7 @@ from torch.utils.tensorboard import SummaryWriter
 import os
 import torch
 
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 print('in if')
 if __name__ == "__main__":
