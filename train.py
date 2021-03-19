@@ -34,8 +34,8 @@ if __name__ == "__main__":
     writer = SummaryWriter(log_dir=dir, comment=opt.name)
     # Start Training
     # for epoch in range (opt.epoch_count, opt.niter + opt.niter_decay + 1):
-    amount_epochs = 2
-    len_dataset = 1000
+    amount_epochs = 10
+    len_dataset = 10000
     for epoch in range(amount_epochs):
         epoch_start_time = time.time()
         epoch_iter = 0
@@ -76,7 +76,7 @@ if __name__ == "__main__":
                 writer.add_scalar('D_loss', errors['D'], total_steps + 1)
                 writer.add_scalar('F_loss', errors['F'], total_steps + 1)
                 print('iteration time: %g; step: %d / %d' %( t, total_steps, len_dataset*amount_epochs ))
-                print('time left : %g' %(t*(len_dataset*amount_epochs-total_steps)))
+                print('time left : %g seconds' %(t*(len_dataset*amount_epochs-total_steps)))
                 
         if (epoch % 1) == 0: #epsavefreq 2
             print('saving the model at the end of epoch %d, iters %d' %
