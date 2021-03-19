@@ -47,10 +47,14 @@ if __name__ == "__main__":
             model.netEN.load_state_dict(torch.load(param_paths[2]))
             model.netDE.load_state_dict(torch.load(param_paths[3]))
             model.netMEDFE.load_state_dict(torch.load(param_paths[0]))
+            model.netF.load_state_dict(torch.load(param_paths[1]))
+            model.netD.load_state_dict(torch.load(param_paths[4]))
+
             model.netEN.eval()
             model.netDE.eval()
             model.netMEDFE.eval()
-
+            model.netF.eval()
+            model.netD.eval()
             
                 
     results_dir = '/content/drive/My Drive/ReproductionDL/checkpoints/Results'
