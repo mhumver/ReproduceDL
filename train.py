@@ -34,7 +34,7 @@ if __name__ == "__main__":
     writer = SummaryWriter(log_dir=dir, comment=opt.name)
     # Start Training
     # for epoch in range (opt.epoch_count, opt.niter + opt.niter_decay + 1):
-    amount_epochs = 3
+    amount_epochs = 2
     len_dataset = 1000
     for epoch in range(amount_epochs):
         epoch_start_time = time.time()
@@ -78,7 +78,7 @@ if __name__ == "__main__":
                 print('iteration time: %g; step: %d / %d' %( t, total_steps, len_dataset*amount_epochs ))
                 print('time left : %g' %(t*(len_dataset*amount_epochs-total_steps)))
                 
-        if (epoch % opt.save_epoch_freq) == 0: #epsavefreq 2
+        if (epoch % 1) == 0: #epsavefreq 2
             print('saving the model at the end of epoch %d, iters %d' %
                   (epoch, total_steps))
             model.save_networks(epoch)
