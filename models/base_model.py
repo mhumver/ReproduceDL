@@ -55,7 +55,9 @@ class BaseModel():
                 #    net.cuda(self.gpu_ids[0])
                 #else:
                 torch.save(net.state_dict(), save_path)
-
+                
+                
+                
     # helper loading function that can be used by subclasses
     def load_networks(self, which_epoch):
         for name in self.model_names:
