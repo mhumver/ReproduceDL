@@ -81,4 +81,4 @@ if __name__ == "__main__":
             fake_image = (fake_out+1)/2.0
         output = fake_image.detach().numpy()[0].transpose((1, 2, 0))*255
         output = Image.fromarray(output.astype(np.uint8))
-        output.save(rf"{opt.results_dir}/{i}.png")
+        output.save("{results_dir}/{i}.png")
