@@ -42,8 +42,14 @@ if __name__ == "__main__":
             model.netEN.module.load_state_dict(torch.load(param_paths[2]))
             model.netDE.module.load_state_dict(torch.load(param_paths[3]))
             model.netMEDFE.module.load_state_dict(torch.load(param_paths[0]))
-           
-
+            model.netEN.eval()
+            model.netDE.eval()
+            model.netMEDFE.eval()
+            print(param_paths[2])
+            print(param_paths[3])
+            print(param_paths[0])
+            
+                
     results_dir = '/content/drive/My Drive/ReproductionDL/checkpoints/Results'
     #if not os.path.exists( results_dir):
     #    os.mkdir(results_dir)
