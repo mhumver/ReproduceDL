@@ -13,6 +13,11 @@ import numpy as np
 from glob import glob
 from tqdm import tqdm
 import torchvision.transforms as transforms
+import torchvision
+from torch.utils import data
+from torch.utils.tensorboard import SummaryWriter
+
+
 if __name__ == "__main__":
 
     img_transform = transforms.Compose([
@@ -51,6 +56,8 @@ if __name__ == "__main__":
     print(len(st_paths))
     print(len(mask_paths))
 
+    writer = SummaryWriter(log_dir=results_dir, comment=opt.name)
+
     #mask_paths = glob('{:s}/*'.format(opt.mask_root))
     #de_paths = glob('{:s}/*'.format(opt.de_root))
     #st_path = glob('{:s}/*'.format(opt.st_root))
@@ -79,6 +86,21 @@ if __name__ == "__main__":
             fake_out = model.fake_out
             fake_out = fake_out.detach().cpu() * mask + detail*(1-mask)
             fake_image = (fake_out+1)/2.0
-        output = fake_image.detach().numpy()[0].transpose((1, 2, 0))*255
-        output = Image.fromarray(output.astype(np.uint8))
-        output.save("/content/drive/My Drive/ReproductionDL/checkpoints/Results/"+str(i)+".png")
+        #output = fake_image.detach().numpy()[0].transpose((1, 2, 0))*255
+        #output = Image.fromarray(output.astype(np.uint8))
+        #output.save("/content/drive/My Drive/ReproductionDL/checkpoints/Results/"+str(i)+".png")
+        
+        if i%10 == 0:
+            input, output, GT = model.get_current_visuals()
+            image_out = torch.cat([input, output, GT], 0)
+            grid = torchvision.utils.make_grid(image_out)
+            writer.add_image('img_(%d)' % (i), grid, i + 1)
+
+        
+        
+        
+        
+        
+        
+        
+        
