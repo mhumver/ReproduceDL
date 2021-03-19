@@ -62,8 +62,9 @@ if __name__ == "__main__":
     #de_paths = glob('{:s}/*'.format(opt.de_root))
     #st_path = glob('{:s}/*'.format(opt.st_root))
     image_len = len(de_paths )
-    for i in tqdm(range(image_len)):
-        # only use one mask for all image
+    #for i in tqdm(range(image_len)):
+    for i in range(10):
+         # only use one mask for all image
         path_m = mask_paths[0]
         path_d = de_paths[i]
         path_s = de_paths[i]
@@ -96,7 +97,7 @@ if __name__ == "__main__":
             grid = torchvision.utils.make_grid(image_out)
             writer.add_image('img_(%d)' % (i), grid, i + 1)
 
-        
+    writer.close()
         
         
         
