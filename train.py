@@ -76,7 +76,7 @@ if __name__ == "__main__":
                 writer.add_scalar('D_loss', errors['D'], total_steps + 1)
                 writer.add_scalar('F_loss', errors['F'], total_steps + 1)
                 print('iteration time: %g; step: %d / %d' %( t, total_steps, len_dataset*amount_epochs ))
-                
+                print('time left : %g' %(t*(len_dataset*amount_epochs-total_steps)))
                 
         if (epoch % opt.save_epoch_freq) == 0: #epsavefreq 2
             print('saving the model at the end of epoch %d, iters %d' %
