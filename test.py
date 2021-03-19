@@ -37,8 +37,10 @@ if __name__ == "__main__":
     
     
     param_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/checkpoints/*.pth'), reverse = True)
-    plen = len(param_paths)            
-    if plen>=5:
+    plen = len(param_paths) 
+    print('len param')
+    print(plen)           
+    if plen>0:
             model.netEN.module.load_state_dict(torch.load(param_paths[2]))
             model.netDE.module.load_state_dict(torch.load(param_paths[3]))
             model.netMEDFE.module.load_state_dict(torch.load(param_paths[0]))
