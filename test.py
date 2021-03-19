@@ -76,7 +76,7 @@ if __name__ == "__main__":
     #st_path = glob('{:s}/*'.format(opt.st_root))
     image_len = len(de_paths )
     #for i in tqdm(range(image_len)):
-    for i in range(10):
+    for i in range(1000):
          # only use one mask for all image
         path_m = mask_paths[0]
         path_d = de_paths[i]
