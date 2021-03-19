@@ -28,16 +28,32 @@ if __name__ == "__main__":
 
     opt = TestOptions().parse()
     model = create_model(opt)
-    model.netEN.module.load_state_dict(torch.load("EN.pth"))
-    model.netDE.module.load_state_dict(torch.load("DE.pth"))
-    model.netMEDFE.module.load_state_dict(torch.load("MEDEF.pth"))
-    results_dir = r'./result'
-    if not os.path.exists( results_dir):
-        os.mkdir(results_dir)
+    
+    
+    
+    param_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/checkpoints/*.pth'), reverse = True)
+    plen = len(param_paths)            
+    if plen>=5:
+            model.netEN.module.load_state_dict(torch.load(param_paths[2]))
+            model.netDE.module.load_state_dict(torch.load(param_paths[3]))
+            model.netMEDFE.module.load_state_dict(torch.load(param_paths[0]))
+           
 
-    mask_paths = glob('{:s}/*'.format(opt.mask_root))
-    de_paths = glob('{:s}/*'.format(opt.de_root))
-    st_path = glob('{:s}/*'.format(opt.st_root))
+    results_dir = '/content/drive/My Drive/ReproductionDL/checkpoints/Results'
+    #if not os.path.exists( results_dir):
+    #    os.mkdir(results_dir)
+
+            
+    de_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/celeba_256_1000/*.jpg'))
+    st_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/celebastruct_256_1000/*.jpg'))
+    mask_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/mask_dataset28/*.png'))
+    print(len(de_paths))
+    print(len(st_paths))
+    print(len(mask_paths))
+
+    #mask_paths = glob('{:s}/*'.format(opt.mask_root))
+    #de_paths = glob('{:s}/*'.format(opt.de_root))
+    #st_path = glob('{:s}/*'.format(opt.st_root))
     image_len = len(de_paths )
     for i in tqdm(range(image_len)):
         # only use one mask for all image
