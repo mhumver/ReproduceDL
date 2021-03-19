@@ -36,7 +36,7 @@ if __name__ == "__main__":
     
     
     
-    param_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/checkpoints/*.pth'), reverse = True)
+    param_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/checkpoints/Mutual Encoder-Decoder/*.pth'), reverse = True)
     plen = len(param_paths) 
     print('len param')
     print(plen)           
