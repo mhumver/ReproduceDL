@@ -50,11 +50,11 @@ class BaseModel():
                 net = getattr(self, 'net' + name)
                 optimize = getattr(self, 'optimizer_' + name)
 
-                if len(self.gpu_ids) > 0 and torch.cuda.is_available():
-                    torch.save({'net': net.module.cpu().state_dict(), 'optimize': optimize.state_dict()}, save_path)
-                    net.cuda(self.gpu_ids[0])
-                else:
-                    torch.save(net.cpu().state_dict(), save_path)
+                #if len(self.gpu_ids) > 0 and torch.cuda.is_available():
+                #    torch.save({'net': net.module.cpu().state_dict(), 'optimize': optimize.state_dict()}, save_path)
+                #    net.cuda(self.gpu_ids[0])
+                #else:
+                torch.save(net.state_dict(), save_path)
 
     # helper loading function that can be used by subclasses
     def load_networks(self, which_epoch):
