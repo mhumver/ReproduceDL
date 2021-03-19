@@ -81,4 +81,4 @@ if __name__ == "__main__":
             fake_image = (fake_out+1)/2.0
         output = fake_image.detach().numpy()[0].transpose((1, 2, 0))*255
         output = Image.fromarray(output.astype(np.uint8))
-        output.save("/content/drive/My Drive/ReproductionDL/checkpoints/Results/"+i+".png")
+        output.save("/content/drive/My Drive/ReproductionDL/checkpoints/Results/"+str(i)+".png")
