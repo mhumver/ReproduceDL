@@ -34,7 +34,9 @@ if __name__ == "__main__":
     writer = SummaryWriter(log_dir=dir, comment=opt.name)
     # Start Training
     # for epoch in range (opt.epoch_count, opt.niter + opt.niter_decay + 1):
-    for epoch in range(3):
+    amount_epochs = 3
+    len_dataset = 1000
+    for epoch in range(amount_epochs):
         epoch_start_time = time.time()
         epoch_iter = 0
         for detail, structure, mask in iterator_train:
@@ -45,7 +47,7 @@ if __name__ == "__main__":
             model.optimize_parameters()
             # display the training processing
             if total_steps % opt.display_freq == 0: #dispfreq 10
-                print('display')
+                #print('display')
                 input, output, GT = model.get_current_visuals()
                 image_out = torch.cat([input, output, GT], 0)
                 grid = torchvision.utils.make_grid(image_out)
@@ -73,7 +75,9 @@ if __name__ == "__main__":
                 writer.add_scalar('G_stde', errors['G_stde'], total_steps + 1)
                 writer.add_scalar('D_loss', errors['D'], total_steps + 1)
                 writer.add_scalar('F_loss', errors['F'], total_steps + 1)
-                print('iteration time: %g' % t)
+                print('iteration time: %g; step: %d / %d' %( t, total_steps, len_dataset*amount_epochs ))
+                
+                
         if (epoch % opt.save_epoch_freq) == 0: #epsavefreq 2
             print('saving the model at the end of epoch %d, iters %d' %
                   (epoch, total_steps))
