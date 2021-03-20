@@ -34,7 +34,7 @@ if __name__ == "__main__":
     writer = SummaryWriter(log_dir=dir, comment=opt.name)
     # Start Training
     # for epoch in range (opt.epoch_count, opt.niter + opt.niter_decay + 1):
-    amount_epochs = 2
+    amount_epochs = 16
     len_dataset = 10000
     for epoch in range(amount_epochs):
         epoch_start_time = time.time()
@@ -46,7 +46,7 @@ if __name__ == "__main__":
             model.set_input(detail, structure, mask)
             model.optimize_parameters()
             # display the training processing
-            if total_steps % opt.display_freq == 0: #dispfreq 10
+            if total_steps % 200 == 0: #dispfreq 10
                 #print('display')
                 input, output, GT = model.get_current_visuals()
                 image_out = torch.cat([input, output, GT], 0)
