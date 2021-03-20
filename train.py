@@ -34,7 +34,7 @@ if __name__ == "__main__":
     writer = SummaryWriter(log_dir=dir, comment=opt.name)
     # Start Training
     # for epoch in range (opt.epoch_count, opt.niter + opt.niter_decay + 1):
-    amount_epochs = 10
+    amount_epochs = 2
     len_dataset = 10000
     for epoch in range(amount_epochs):
         epoch_start_time = time.time()
