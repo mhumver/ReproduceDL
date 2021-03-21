@@ -16,8 +16,10 @@ class ResnetBlock(nn.Module):
         )
 
     def forward(self, x):
-        print('X RES', x.size())
+        print('x', x.size())
         out = x + self.conv_block(x)
+        print('self.conv_block(x)',  self.conv_block(x))
+        print('out', out)
         return out
 
 
@@ -87,7 +89,7 @@ class Encoder(nn.Module):
         print()
         print("input")
         print()
-        print('input', input)
+        print('input', input.size())
         print('y_1', y_1.size())
         print('y_2', y_2.size())
         print('y_3', y_3.size())
