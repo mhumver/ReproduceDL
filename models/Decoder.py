@@ -68,6 +68,5 @@ class Decoder(nn.Module):
         print('y_4', y_4.size())
         print('y_5', y_5.size())
         print('y_6', y_6.size())
-        print('y_7', y_7.size())
 
         return out
