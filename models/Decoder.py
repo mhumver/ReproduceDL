@@ -58,4 +58,16 @@ class Decoder(nn.Module):
         y_6 = self.Decoder_6(torch.cat([y_5, input_1], 1))
         out = y_6
 
+        print()
+        print("output")
+        print()
+        print('input', input)
+        print('y_1', y_1.size())
+        print('y_2', y_2.size())
+        print('y_3', y_3.size())
+        print('y_4', y_4.size())
+        print('y_5', y_5.size())
+        print('y_6', y_6.size())
+        print('y_7', y_7.size())
+
         return out
