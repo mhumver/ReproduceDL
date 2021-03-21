@@ -36,6 +36,7 @@ if __name__ == "__main__":
     # for epoch in range (opt.epoch_count, opt.niter + opt.niter_decay + 1):
     amount_epochs = 14
     len_dataset = 10000
+    starttimetotal = time.time()
     for epoch in range(amount_epochs):
         epoch_start_time = time.time()
         epoch_iter = 0
@@ -86,5 +87,6 @@ if __name__ == "__main__":
               (epoch, opt.niter + opt.niter_decay, time.time() - epoch_start_time))
         model.update_learning_rate()
     writer.close()
+    print('total time: %g' %(time.time()-starttimetotal))
     os.system('python -m tensorflow.tensorboard --logdir=' + dir)
 
