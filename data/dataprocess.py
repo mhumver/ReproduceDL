@@ -26,12 +26,13 @@ class DataProcess(torch.utils.data.Dataset):
         trian=True
         if train:
             
-            de = os.path.join(de_root, "*.jpg")
-            st = os.path.join(st_root, "*.jpg")
-            ma = os.path.join(mask_root, "*.png")
-            self.de_paths = sorted(glob(de))
-            self.st_paths = sorted(glob(st))
-            self.mask_paths = sorted(glob(ma))
+           # print(os.path.join(path, "User/Desktop", "file.txt")) 
+          #  de = os.path.join(de_root, "*.jpg")
+         #   st = os.path.join(st_root, "*.jpg")
+        #    ma = os.path.join(mask_root, "")
+            self.de_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/celeba_256_1000/*.jpg'))
+            self.st_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/celebastruct_256_1000/*.jpg'))
+            self.mask_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/mask_dataset28/*.png'))
             
            # self.de_paths = sorted(glob('{:s}/*'.format(de_root), recursive=True))
           #  self.st_paths = sorted(glob('{:s}/*'.format(st_root), recursive=True))
