@@ -60,9 +60,9 @@ if __name__ == "__main__":
     results_dir = '/content/drive/My Drive/ReproductionDL/checkpoints/Results'
     #if not os.path.exists( results_dir):
     #    os.mkdir(results_dir)
-    de = opt.de_root+'*.jpg' #os.path.join(opt.de_root, '*.jpg')
-    st = opt.st_root + '*.jpg' #os.path.join(opt.st_root, '*.jpg')
-    ma = opt.mask_root+ '*.png' #os.path.join(opt.mask_root, '*.png')
+    de = os.path.join(opt.de_root, '*')
+    st = os.path.join(opt.st_root, '*')
+    ma = os.path.join(opt.mask_root, '*')
     print(de)
     print(st)
     print(ma)
