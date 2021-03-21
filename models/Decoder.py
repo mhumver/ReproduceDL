@@ -73,7 +73,7 @@ class Decoder(nn.Module):
         print('input_3', input_3.size())
         print('input_4', input_4.size())
         print('input_5', input_5.size())
-        print('input_6', print_6.size())
+        print('input_6', input_6.size())
 
 
         return out
