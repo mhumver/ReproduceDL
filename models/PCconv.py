@@ -315,6 +315,15 @@ class PCconv(nn.Module):
         x_4 = self.up(x_4, (32, 32))
         x_5 = self.up(x_5, (32, 32))
         x_6 = self.up(x_6, (32, 32))
+        print('--')
+        print("pconv")
+        print('--')
+        print('x_1', x_1.size())
+        print('x_2', x_2.size())
+        print('x_3', x_3.size())
+        print('x_4', x_4.size())
+        print('x_5', x_5.size())
+        print('x_6', x_6.size())
 
         # The first three layers are Texture/detail
         # The last three layers are Structure
@@ -326,6 +335,10 @@ class PCconv(nn.Module):
         x_ST = [x_ST, mask_1]
         x_DE = [x_DE, mask_1]
 
+        print('--')
+        print('x_ST', x_ST)
+        print('x_DE', x_DE)
+
         # Multi Scale PConv fill the Details
         x_DE_3 = self.cov_3(x_DE)
         x_DE_5 = self.cov_5(x_DE)
@@ -333,12 +346,26 @@ class PCconv(nn.Module):
         x_DE_fuse = torch.cat([x_DE_3[0], x_DE_5[0], x_DE_7[0]], 1)
         x_DE_fi = self.down(x_DE_fuse)
 
+        print('--')
+        print('x_DE_3', x_DE_3)
+        print('x_DE_5', x_DE_5)
+        print('x_DE_7', x_DE_7)
+        print('x_DE_fuse', x_DE_fuse)
+        print('x_DE_fi', x_DE_fi)
+
         # Multi Scale PConv fill the Structure
         x_ST_3 = self.cov_3(x_ST)
         x_ST_5 = self.cov_5(x_ST)
         x_ST_7 = self.cov_7(x_ST)
         x_ST_fuse = torch.cat([x_ST_3[0], x_ST_5[0], x_ST_7[0]], 1)
         x_ST_fi = self.down(x_ST_fuse)
+
+        print('--')
+        print('x_ST_3', x_ST_3)
+        print('x_ST_5', x_ST_5)
+        print('x_ST_7', x_ST_7)
+        print('x_ST_fuse', x_ST_fuse)
+        print('x_ST_fi', x_ST_fi)
 
         x_cat = torch.cat([x_ST_fi, x_DE_fi], 1)
         x_cat_fuse = self.fuse(x_cat)

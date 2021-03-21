@@ -3,7 +3,7 @@ import torch.nn as nn
 
 # Define the resnet block
 class ResnetBlock(nn.Module):
-    def __init__(self, dim, dilation=5):
+    def __init__(self, dim, dilation=10):
         super(ResnetBlock, self).__init__()
         self.conv_block = nn.Sequential(
             nn.ReflectionPad2d(dilation),
@@ -16,13 +16,13 @@ class ResnetBlock(nn.Module):
         )
 
     def forward(self, x):
-        print('--')
-        print('Resnet')
-        print('--')
-        print('x', x.size())
+        #print('--')
+        #print('Resnet')
+        #print('--')
+        #print('x', x.size())
         out = x + self.conv_block(x)
-        print('self.conv_block(x)',  self.conv_block(x).size())
-        print('out', out.size())
+        #print('self.conv_block(x)',  self.conv_block(x).size())
+        #print('out', out.size())
         return out
 
 
@@ -90,15 +90,15 @@ class Encoder(nn.Module):
         y_6 = self.Encoder_6(y_5)
         y_7 = self.middle(y_6)
 
-        print('--')
-        print("input")
-        print('--')
-        print('input', input.size())
-        print('y_1', y_1.size())
-        print('y_2', y_2.size())
-        print('y_3', y_3.size())
-        print('y_4', y_4.size())
-        print('y_5', y_5.size())
-        print('y_6', y_6.size())
-        print('y_7', y_7.size())
+        #print('--')
+        #print("input")
+        #print('--')
+        #print('input', input.size())
+        #print('y_1', y_1.size())
+        #print('y_2', y_2.size())
+        #print('y_3', y_3.size())
+        #print('y_4', y_4.size())
+        #print('y_5', y_5.size())
+        #print('y_6', y_6.size())
+        #print('y_7', y_7.size())
         return y_1, y_2, y_3, y_4, y_5, y_7
