@@ -85,6 +85,7 @@ if __name__ == "__main__":
     image_len = len(de_paths )
     #for i in tqdm(range(image_len)):
     for i in range(1000):
+        print(i)
          # only use one mask for all image
         path_m = mask_paths[0]
         path_d = de_paths[i]
