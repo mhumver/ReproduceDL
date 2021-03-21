@@ -67,6 +67,7 @@ class Decoder(nn.Module):
         print('y_4', y_4.size())
         print('y_5', y_5.size())
         print('y_6', y_6.size())
+        print('out', out.size())
         print('--')
         print('input_1', input_1.size())
         print('input_2', input_2.size())
@@ -74,6 +75,9 @@ class Decoder(nn.Module):
         print('input_4', input_4.size())
         print('input_5', input_5.size())
         print('input_6', input_6.size())
+        print('--')
+        print('torch.cat([y_1, input_5], 1)', torch.cat([y_1, input_5], 1).size())
+        print('torch.cat([y_2, input_4], 1)', torch.cat([y_2, input_4], 1).size())
 
 
         return out

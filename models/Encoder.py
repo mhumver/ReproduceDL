@@ -10,16 +10,19 @@ class ResnetBlock(nn.Module):
             nn.Conv2d(in_channels=dim, out_channels=dim, kernel_size=3, padding=0, dilation=dilation, bias=False),
             nn.InstanceNorm2d(dim, track_running_stats=False),
             nn.ReLU(True),
-            nn.ReflectionPad2d(1),
-            nn.Conv2d(in_channels=dim, out_channels=dim, kernel_size=3, padding=0, dilation=1, bias=False),
+            nn.ReflectionPad2d(dilation),
+            nn.Conv2d(in_channels=dim, out_channels=dim, kernel_size=3, padding=0, dilation=dilation, bias=False),
             nn.InstanceNorm2d(dim, track_running_stats=False),
         )
 
     def forward(self, x):
+        print('--')
+        print('Resnet')
+        print('--')
         print('x', x.size())
         out = x + self.conv_block(x)
-        print('self.conv_block(x)',  self.conv_block(x))
-        print('out', out)
+        print('self.conv_block(x)',  self.conv_block(x).size())
+        print('out', out.size())
         return out
 
 
@@ -86,9 +89,10 @@ class Encoder(nn.Module):
         y_5 = self.Encoder_5(y_4)
         y_6 = self.Encoder_6(y_5)
         y_7 = self.middle(y_6)
-        print()
+
+        print('--')
         print("input")
-        print()
+        print('--')
         print('input', input.size())
         print('y_1', y_1.size())
         print('y_2', y_2.size())
