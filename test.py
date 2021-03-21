@@ -60,11 +60,16 @@ if __name__ == "__main__":
     results_dir = '/content/drive/My Drive/ReproductionDL/checkpoints/Results'
     #if not os.path.exists( results_dir):
     #    os.mkdir(results_dir)
-
+    de = os.path.join(opt.de_root, "*.jpg")
+    st = os.path.join(opt.st_root, "*.jpg")
+    ma = os.path.join(opt.mask_root, "*.png")
+    de_paths = sorted(glob(de))
+    st_paths = sorted(glob(st))
+    mask_paths = sorted(glob(ma))
             
-    de_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/celeba_256_1000/*.jpg'))
-    st_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/celebastruct_256_1000/*.jpg'))
-    mask_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/mask_dataset28/*.png'))
+   # de_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/celeba_256_1000/*.jpg'))
+   # st_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/celebastruct_256_1000/*.jpg'))
+   # mask_paths = sorted(glob('/content/drive/My Drive/ReproductionDL/mask_dataset28/*.png'))
     print(len(de_paths))
     print(len(st_paths))
     print(len(mask_paths))
