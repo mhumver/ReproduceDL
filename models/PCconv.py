@@ -315,6 +315,7 @@ class PCconv(nn.Module):
         x_4 = self.up(x_4, (32, 32))
         x_5 = self.up(x_5, (32, 32))
         x_6 = self.up(x_6, (32, 32))
+
         print('--')
         print("pconv")
         print('--')
@@ -336,8 +337,8 @@ class PCconv(nn.Module):
         x_DE = [x_DE, mask_1]
 
         print('--')
-        print('x_ST rows, columns', len(x_ST), len(x_ST[0]))
-        print('x_DE rows, columns', len(x_DE), len(x_DE[0]))
+        print('x_ST rows, columns', len(x_ST), len(x_ST[0]), len(x_ST[1]))
+        print('x_DE rows, columns', len(x_DE), len(x_DE[0]), len(x_DE[1]))
 
         # Multi Scale PConv fill the Details
         x_DE_3 = self.cov_3(x_DE)
@@ -347,11 +348,11 @@ class PCconv(nn.Module):
         x_DE_fi = self.down(x_DE_fuse)
 
         print('--')
-        print('x_DE_3 no size rows, columns', len(x_DE_3), len(x_DE_3[0]))
-        print('x_DE_5 no size', len(x_DE_5))
-        print('x_DE_7 len not size', len(x_DE_7))
-        print('x_DE_fuse len not size', len(x_DE_fuse))
-        print('x_DE_fi len not size', len(x_DE_fi))
+        print('x_DE_3 rows, columns', len(x_DE_3), len(x_DE_3[0]), len(x_DE_3[1]))
+        print('x_DE_5 rows, columns', len(x_DE_5), len(x_DE_5[0]), len(x_DE_5[1]))
+        print('x_DE_7 rows, columns', len(x_DE_7), len(x_DE_7[0]))
+        print('x_DE_fuse', x_DE_fuse.size())
+        print('x_DE_fi', x_DE_fi.size())
 
         # Multi Scale PConv fill the Structure
         x_ST_3 = self.cov_3(x_ST)
@@ -361,9 +362,9 @@ class PCconv(nn.Module):
         x_ST_fi = self.down(x_ST_fuse)
 
         print('--')
-        print('x_ST_3 no size', len(x_ST_3))
-        print('x_ST_5 len not size', len(x_ST_5))
-        print('x_ST_7 len not size', len(x_ST_7))
+        print('x_ST_3 no size', len(x_ST_3), len(x_ST_3[0]))
+        print('x_ST_5 len not size', len(x_ST_5), len(x_ST_5[0]))
+        print('x_ST_7 len not size', len(x_ST_7), len(x_ST_7[0]))
         print('x_ST_fuse', x_ST_fuse.size())
         print('x_ST_fi', x_ST_fi.size())
 
