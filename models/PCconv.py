@@ -336,7 +336,7 @@ class PCconv(nn.Module):
         x_DE = [x_DE, mask_1]
 
         print('--')
-        print('x_ST', x_ST.size())
+        print('x_ST', len(x_ST))
         print('x_DE', x_DE.size())
 
         # Multi Scale PConv fill the Details
