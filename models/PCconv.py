@@ -347,11 +347,11 @@ class PCconv(nn.Module):
         x_DE_fi = self.down(x_DE_fuse)
 
         print('--')
-        print('x_DE_3', x_DE_3)
-        print('x_DE_5', x_DE_5)
-        print('x_DE_7', x_DE_7)
-        print('x_DE_fuse', x_DE_fuse)
-        print('x_DE_fi', x_DE_fi)
+        print('x_DE_3', x_DE_3.size())
+        print('x_DE_5', x_DE_5.size())
+        print('x_DE_7', x_DE_7.size())
+        print('x_DE_fuse', x_DE_fuse.size())
+        print('x_DE_fi', x_DE_fi.size())
 
         # Multi Scale PConv fill the Structure
         x_ST_3 = self.cov_3(x_ST)
@@ -361,11 +361,11 @@ class PCconv(nn.Module):
         x_ST_fi = self.down(x_ST_fuse)
 
         print('--')
-        print('x_ST_3', x_ST_3)
-        print('x_ST_5', x_ST_5)
-        print('x_ST_7', x_ST_7)
-        print('x_ST_fuse', x_ST_fuse)
-        print('x_ST_fi', x_ST_fi)
+        print('x_ST_3', x_ST_3.size())
+        print('x_ST_5', x_ST_5.size())
+        print('x_ST_7', x_ST_7.size())
+        print('x_ST_fuse', x_ST_fuse.size())
+        print('x_ST_fi', x_ST_fi.size())
 
         x_cat = torch.cat([x_ST_fi, x_DE_fi], 1)
         x_cat_fuse = self.fuse(x_cat)
