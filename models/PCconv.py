@@ -336,8 +336,8 @@ class PCconv(nn.Module):
         x_DE = [x_DE, mask_1]
 
         print('--')
-        print('x_ST', len(x_ST))
-        print('x_DE', x_DE.size())
+        print('x_ST rows, columns', len(x_ST), len(x_ST[0]))
+        print('x_DE rows, columns', len(x_DE), len(x_DE[0]))
 
         # Multi Scale PConv fill the Details
         x_DE_3 = self.cov_3(x_DE)
@@ -347,7 +347,7 @@ class PCconv(nn.Module):
         x_DE_fi = self.down(x_DE_fuse)
 
         print('--')
-        print('x_DE_3 no size', len(x_DE_3))
+        print('x_DE_3 no size rows, columns', len(x_DE_3), len(x_DE_3[0]))
         print('x_DE_5 no size', len(x_DE_5))
         print('x_DE_7 len not size', len(x_DE_7))
         print('x_DE_fuse len not size', len(x_DE_fuse))
