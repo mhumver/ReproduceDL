@@ -361,7 +361,7 @@ class PCconv(nn.Module):
         x_ST_fi = self.down(x_ST_fuse)
 
         print('--')
-        print('x_ST_3', x_ST_3.size())
+        print('x_ST_3 no size', len(x_ST_3))
         print('x_ST_5', x_ST_5.size())
         print('x_ST_7', x_ST_7.size())
         print('x_ST_fuse', x_ST_fuse.size())
