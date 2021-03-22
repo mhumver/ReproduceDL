@@ -348,8 +348,8 @@ class PCconv(nn.Module):
         x_DE_fi = self.down(x_DE_fuse)
 
         print('--')
-        print('x_DE_3 rows, columns', len(x_DE_3), len(x_DE_3[0]), len(x_DE_3[1]))
-        print('x_DE_5 rows, columns', len(x_DE_5), len(x_DE_5[0]), len(x_DE_5[1]))
+        print('x_DE_3 rows, columns', len(x_DE_3), len(x_DE_3[0]), len(x_DE_3[0][1]))
+        print('x_DE_5 rows, columns', len(x_DE_5), len(x_DE_5[0]), len(x_DE_5[0][1]))
         print('x_DE_7 rows, columns', len(x_DE_7), len(x_DE_7[0]))
         print('x_DE_fuse', x_DE_fuse.size())
         print('x_DE_fi', x_DE_fi.size())
