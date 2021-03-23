@@ -1,6 +1,5 @@
 import time
 import pdb
-import tensorflow as tf
 from options.test_options import TestOptions
 from data.dataprocess import DataProcess
 from models.models import create_model
@@ -119,7 +118,9 @@ if __name__ == "__main__":
             image_out = torch.cat([input, output, GT], 0)
             grid = torchvision.utils.make_grid(image_out)
             writer.add_image('img_(%d)' % (i), grid, i + 1)
-            print(tf.image.psnr(input, output, max_val=255))
+
+            mse = torch.mean((input - output) ** 2)
+            print('PSNR', 20 * torch.log10(255.0 / torch.sqrt(mse)))
 
     writer.close()
         
