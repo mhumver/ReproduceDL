@@ -3,7 +3,7 @@ import torch.nn as nn
 
 # Define the resnet block
 class ResnetBlock(nn.Module):
-    def __init__(self, dim, dilation=1):
+    def __init__(self, dim, dilation=5):
         super(ResnetBlock, self).__init__()
         self.conv_block = nn.Sequential(
             nn.ReflectionPad2d(dilation),
@@ -56,7 +56,7 @@ class UnetSkipConnectionEBlock(nn.Module):
 
 
 class Encoder(nn.Module):
-    def __init__(self, input_nc, output_nc, ngf=64, res_num=16, norm_layer=nn.BatchNorm2d, use_dropout=False):
+    def __init__(self, input_nc, output_nc, ngf=64, res_num=4, norm_layer=nn.BatchNorm2d, use_dropout=False):
         super(Encoder, self).__init__()
 
         # construct unet structure
