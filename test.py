@@ -1,5 +1,6 @@
 import time
 import pdb
+import tensorflow as tf
 from options.test_options import TestOptions
 from data.dataprocess import DataProcess
 from models.models import create_model
