@@ -118,6 +118,7 @@ if __name__ == "__main__":
             image_out = torch.cat([input, output, GT], 0)
             grid = torchvision.utils.make_grid(image_out)
             writer.add_image('img_(%d)' % (i), grid, i + 1)
+            print(tf.image.psnr(input, output, max_val=255))
 
     writer.close()
         
