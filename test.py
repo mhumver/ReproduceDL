@@ -119,7 +119,7 @@ if __name__ == "__main__":
             grid = torchvision.utils.make_grid(image_out)
             writer.add_image('img_(%d)' % (i), grid, i + 1)
 
-            mse = torch.mean((input - output) ** 2)
+            mse = torch.mean((GT - output) ** 2)
             print('PSNR', 20 * torch.log10(255.0 / torch.sqrt(mse)))
 
     writer.close()
