@@ -84,6 +84,7 @@ if __name__ == "__main__":
     #st_path = glob('{:s}/*'.format(opt.st_root))
     image_len = len(de_paths )
     #for i in tqdm(range(image_len)):
+    PSNR_list = []
     for i in range(1000):
         print(i)
          # only use one mask for all image
@@ -119,9 +120,13 @@ if __name__ == "__main__":
             grid = torchvision.utils.make_grid(image_out)
             writer.add_image('img_(%d)' % (i), grid, i + 1)
 
+            #print PSNR
             mse = torch.mean((GT - output) ** 2)
-            print('PSNR', 20 * torch.log10(255.0 / torch.sqrt(mse)))
-
+            PSNR = 20 * torch.log10(255.0 / torch.sqrt(mse))
+            print('PSNR', PSNR.squeeze().tolist())
+            PSNR_list.append(PSNR.squeeze().tolist())
+    print(PSNR_list)
+    print()
     writer.close()
         
         

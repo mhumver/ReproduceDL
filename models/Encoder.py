@@ -3,15 +3,15 @@ import torch.nn as nn
 
 # Define the resnet block
 class ResnetBlock(nn.Module):
-    def __init__(self, dim, dilation=5 ):
+    def __init__(self, dim, dilation=1):
         super(ResnetBlock, self).__init__()
         self.conv_block = nn.Sequential(
             nn.ReflectionPad2d(dilation),
             nn.Conv2d(in_channels=dim, out_channels=dim, kernel_size=3, padding=0, dilation=dilation, bias=False),
             nn.InstanceNorm2d(dim, track_running_stats=False),
             nn.ReLU(True),
-            nn.ReflectionPad2d(dilation),
-            nn.Conv2d(in_channels=dim, out_channels=dim, kernel_size=3, padding=0, dilation=dilation, bias=False),
+            nn.ReflectionPad2d(1),
+            nn.Conv2d(in_channels=dim, out_channels=dim, kernel_size=3, padding=0, dilation=1, bias=False),
             nn.InstanceNorm2d(dim, track_running_stats=False),
         )
 
