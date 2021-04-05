@@ -68,10 +68,9 @@ class Encoder(nn.Module):
         Encoder_6 = UnetSkipConnectionEBlock(ngf * 8, ngf * 8, norm_layer=norm_layer, use_dropout=use_dropout, innermost=True)
 
         blocks = []
-        for _ in range(2):
+        for _ in range(1):
             block = ResnetBlock(ngf * 8, 2)
             blocks.append(block)
-            print(_)
 
         self.middle = nn.Sequential(*blocks)
 
