@@ -67,12 +67,12 @@ class Encoder(nn.Module):
         Encoder_5 = UnetSkipConnectionEBlock(ngf * 8, ngf * 8, norm_layer=norm_layer, use_dropout=use_dropout)
         Encoder_6 = UnetSkipConnectionEBlock(ngf * 8, ngf * 8, norm_layer=norm_layer, use_dropout=use_dropout, innermost=True)
 
-        # blocks = []
-        # for _ in range(16):
-        #     block = ResnetBlock(ngf * 8, 2)
-        #     blocks.append(block)
-        #
-        # self.middle = nn.Sequential(*blocks)
+        blocks = []
+        for _ in range(2):
+            block = ResnetBlock(ngf * 8, 2)
+            blocks.append(block)
+
+        self.middle = nn.Sequential(*blocks)
 
         self.Encoder_1 = Encoder_1
         self.Encoder_2 = Encoder_2
@@ -88,7 +88,7 @@ class Encoder(nn.Module):
         y_4 = self.Encoder_4(y_3)
         y_5 = self.Encoder_5(y_4)
         y_6 = self.Encoder_6(y_5)
-        y_7 = y_6
+        y_7 = self.middle(y_6)
 
         #print('--')
         #print("input")
