@@ -71,6 +71,7 @@ class Encoder(nn.Module):
         for _ in range(2):
             block = ResnetBlock(ngf * 8, 2)
             blocks.append(block)
+            print(_)
 
         self.middle = nn.Sequential(*blocks)
 
